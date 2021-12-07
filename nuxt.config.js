@@ -29,6 +29,14 @@ export default {
     '@/plugins/element-ui'
   ],
 
+  router: {
+    base: '/' //此为根目录，如果有具体目录需求按实际情况写
+  },
+  
+  server:{
+    port: 3000, //端口
+    // host: '0.0.0.0' // default: localhost   
+  },
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 

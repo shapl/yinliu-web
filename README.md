@@ -1,7 +1,14 @@
-淘宝联盟APP任务引流（前端部分）
+## 淘宝联盟APP任务引流（前端部分）
 
-地址：yinliu.chaozhi.hk
+安装：
 
---本地存储订单号
+```
+cd /www/wwwroot/yinliu-web/
 
---支持二级目录
+npm i
+
+```
+
+安装pm2
+
+pm2 start npm --name yinliu -- run start
