@@ -46,7 +46,12 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/style-resources',
   ],
+
+  styleResources: {
+    less: './assets/**/*.less',
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
