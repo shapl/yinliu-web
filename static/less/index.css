@@ -10,3 +10,38 @@
   font-size: 16px;
   font-weight: bold;
 }
+.el-step {
+  cursor: pointer;
+}
+.el-step:hover .el-step__icon-inner,
+.el-step:hover .el-step__title,
+.el-step:hover .el-step__description {
+  color: #409EFF;
+}
+.el-step.active .el-step__icon-inner,
+.el-step.active .el-step__title,
+.el-step.active .el-step__description {
+  color: #409EFF;
+}
+.el-form {
+  width: 600px;
+  margin: 20px auto 0;
+}
+.el-form .el-form-item__content {
+  display: flex;
+  position: relative;
+}
+.el-form .el-form-item__content .el-select,
+.el-form .el-form-item__content .el-input,
+.el-form .el-form-item__content .el-textarea {
+  flex: 1;
+}
+.el-form .el-form-item__content .el-input-number {
+  margin-left: 25px;
+}
+.el-form .el-form-item__content .float-btn {
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  z-index: 1;
+}

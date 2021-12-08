@@ -9,7 +9,7 @@
 <style lang="less">
 .logo-wrap {
     text-align: center;
-    padding: 20px 0;
+    padding: 40px 0 20px;
     .logo-pic {
         width: 380px;
     }
