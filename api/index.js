@@ -1,3 +1,4 @@
+import qs from 'qs';
 import axios from 'axios';
 import setting from '@/setting.js';
 
@@ -6,8 +7,19 @@ const http = axios.create({
     timeout: 1000,
 });
 
+const ajax = axios.create({
+    baseURL: setting.baseURL,
+    timeout: 1000,
+    headers:{
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
+});
+
 // 返回拦截器
 http.interceptors.response.use((config) => {
+    return config.data;
+});
+ajax.interceptors.response.use((config) => {
     return config.data;
 });
 
@@ -30,11 +42,11 @@ export default {
     },
     // 检测淘口令
     checkTkl(params ={}) {
-        return http.post(`/tkl.php`, params)
+        return ajax.post(`/tkl.php`, qs.stringify(params))
     },
     // 生成订单
     createOrder(params ={}) {
-        return http.post('/ajax.php?act=pay', params)
+        return ajax.post('/ajax.php?act=pay', qs.stringify(params))
     }
 
 }

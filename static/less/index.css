@@ -10,6 +10,9 @@
   font-size: 16px;
   font-weight: bold;
 }
+.form-wrap {
+  min-height: 590px;
+}
 .el-step {
   cursor: pointer;
 }
@@ -44,4 +47,7 @@
   bottom: 0px;
   right: 0;
   z-index: 1;
+}
+.el-form .btn-row .el-form-item__content {
+  justify-content: center;
 }
