@@ -47,6 +47,10 @@ export default {
     // 生成订单
     createOrder(params ={}) {
         return ajax.post('/ajax.php?act=pay', qs.stringify(params))
-    }
+    },
+    // 查询订单
+    queryOrder(params ={}) {
+        return ajax.post('/ajax.php?act=query', qs.stringify(params))
+    },
 
 }
