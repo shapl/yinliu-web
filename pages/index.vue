@@ -54,7 +54,7 @@
                     <i class="iconfont icon-qqzhifu"></i> 客服QQ
                 </a>
             </div>
-            <el-form :model="ruleForm" label-width="140px">
+            <el-form :model="ruleForm" label-width="20%">
                 <el-form-item label="选择分类">
                     <el-select v-model="currentCid" placeholder="请选择分类" @change="changeCid">
                         <el-option
@@ -75,9 +75,12 @@
                         ></el-option>
                     </el-select>
                 </el-form-item>
-                <el-form-item label="商品价格">
+                <el-form-item label="商品价格" class="price-number-item">
                     <!-- <el-input v-model="totalPrice" disabled placeholder="商品价格"></el-input> -->
                     <span class="price">{{totalPrice}}</span>
+                    <el-input-number v-model="number" @change="handleNumberChange" :min="1" :max="20" label="下单数量"></el-input-number>
+                </el-form-item>
+                <el-form-item label="下单数量" class="number-item">
                     <el-input-number v-model="number" @change="handleNumberChange" :min="1" :max="20" label="下单数量"></el-input-number>
                 </el-form-item>
                 <el-form-item label="淘口令文案">

@@ -48,17 +48,20 @@ img {
 .form-wrap .el-form {
   margin-bottom: 50px;
 }
-.form-wrap .el-input-number {
+.form-wrap .price-number-item .el-input-number {
   margin-left: 25px;
   position: relative;
 }
-.form-wrap .el-input-number::before {
-  content: '商品数量';
+.form-wrap .price-number-item .el-input-number::before {
+  content: '下单数量';
   position: absolute;
   left: -75px;
   color: #606266;
   font-size: 14px;
   line-height: 40px;
+}
+.form-wrap .number-item {
+  display: none;
 }
 .form-wrap .float-btn {
   position: absolute;
@@ -122,6 +125,10 @@ img {
 .el-form .el-form-item__content .el-textarea {
   flex: 1;
 }
+.el-form .el-form-item__label {
+  min-width: 82px !important;
+  max-width: 140px !important;
+}
 .el-form .btn-row {
   display: flex;
   align-items: center;
@@ -129,4 +136,44 @@ img {
 }
 .el-form .btn-row .el-form-item__content {
   justify-content: center;
+}
+.el-step.is-center .el-step__description {
+  padding: 0 35px;
+}
+@media screen and (max-width: 860px) {
+  .card-bg {
+    width: 100%;
+  }
+  .el-form {
+    width: 100%;
+  }
+  .el-step.is-center .el-step__description {
+    padding: 0 20px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .logo-wrap {
+    padding: 20px 0 0px;
+  }
+  .card-bg {
+    padding: 20px;
+  }
+  .el-step.is-center .el-step__description {
+    padding: 0 10px;
+  }
+  .el-step__title {
+    font-size: 14px;
+  }
+  .form-wrap .price-number-item .el-input-number {
+    display: none;
+  }
+  .form-wrap .number-item {
+    display: block;
+  }
+  .btn-row {
+    margin-top: 30px;
+  }
+  .btn-row .el-button {
+    width: 100%;
+  }
 }
