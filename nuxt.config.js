@@ -1,10 +1,12 @@
+import setting from './setting';
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'yinliu-web',
+    title: setting.title,
     htmlAttrs: {
       lang: 'en'
     },
@@ -12,7 +14,9 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      { hid: 'keywords', name: 'keywords', content: setting.keywords },
+      { hid: 'description', name: 'description', content: setting.description },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -23,7 +27,7 @@ export default {
   css: [
     'element-ui/lib/theme-chalk/index.css',
     './static/css/iconfont.css',
-    './static/css/normalize.css',
+    './static/css/common.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -32,7 +36,7 @@ export default {
   ],
 
   router: {
-    base: '/' //此为根目录，如果有具体目录需求按实际情况写
+    base: setting.path, //此为根目录，如果有具体目录需求按实际情况写
   },
   
   server:{

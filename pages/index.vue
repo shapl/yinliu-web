@@ -2,10 +2,10 @@
     <div class="page-index" v-cloak>
 
         <el-alert
-            v-if="webConfing.anounce"
+            v-if="webConfig.anounce"
             class="notice"
             type="success"
-            :description="webConfing.anounce"
+            :description="webConfig.anounce"
             :closable="false">
         </el-alert>
 
@@ -50,7 +50,7 @@
         <div class="card-bg form-wrap" v-show="steps == 2">
             <div class="wrap-title">
                 <h1>自助下单</h1>
-                <a class="qq-box" v-if="webConfing.qq" target="_blank" :href="`http://wpa.qq.com/msgrd?v=3&uin=${webConfing.qq}&site=qq&menu=yes`">
+                <a class="qq-box" v-if="webConfig.qq" target="_blank" :href="`http://wpa.qq.com/msgrd?v=3&uin=${webConfig.qq}&site=qq&menu=yes`">
                     <i class="iconfont icon-qqzhifu"></i> 客服QQ
                 </a>
             </div>
@@ -211,11 +211,11 @@ export default {
     async asyncData() {
         let res = await api.getIndexData({act: 'index'});
         return {
-            webConfing: res.data
+            webConfig: res.data
         }
     },
     head() {
-        let { title, sitename, keywords, } = this.webConfing;
+        let { title, sitename, keywords, } = this.webConfig;
         return {
             title: `${sitename} - ${title}`,
             meta: [
@@ -235,7 +235,7 @@ export default {
     data() {
         return {
             // 站点配置
-            webConfing: {},
+            webConfig: {},
             steps: 2,
             // 分类列表
             cidList: [],
@@ -262,7 +262,6 @@ export default {
             // 查询订单
             queryQQ: '', // 查询的QQ
             queryList: [], // 查询订单结果
-            histList: [], // 历史订单
         }
     },
     watch: {
@@ -274,19 +273,19 @@ export default {
             },
             deep: true
         },
-        histList: {
-            handler: function(newVal) {
-                localStorage.setItem('orderList', JSON.stringify(newVal));
-            },
-            deep: true
-        }
     },
     mounted() {
-        // console.log(this.webConfing);
+        console.log(this.webConfig);
+        this.initConfig();
         this.getLocalItem();
         this.initClassify();
     },
     methods: {
+        // 针对静态编译，页面加载后请求网站配置
+        async initConfig() {
+            let res = await api.getIndexData({act: 'index'});
+            this.webConfig = res.data;
+        },
         getLocalItem() {
             let ruleForm = localStorage.getItem('ruleForm');
             if (ruleForm) {
@@ -294,12 +293,6 @@ export default {
                     ruleForm = JSON.parse(ruleForm);
                     let {qq, tkl} = ruleForm;
                     Object.assign(this.ruleForm, {qq, tkl});
-                } catch (error) {}
-            }
-            let orderList = localStorage.getItem('orderList');
-            if (orderList) {
-                try {
-                    this.histList = JSON.parse(orderList);
                 } catch (error) {}
             }
         },
@@ -440,7 +433,6 @@ export default {
                         trade_no: res.trade_no,
                         create_date: +new Date()
                     };
-                    this.orderList.push(this.currentOrder);
                     this.$notify.success(option);
                 } else {
                     this.$notify.error(option);
